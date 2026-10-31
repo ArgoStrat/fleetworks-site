@@ -276,9 +276,17 @@ export function Footer() {
             companies in Orlando. Jason Trubenbach.
           </p>
         </div>
-        <p className="text-sm text-subtle">
-          Whip Around is the platform we run for you. It is not the product.
-        </p>
+        <div className="flex flex-col items-start gap-3 md:items-end">
+          <a
+            href="/privacy"
+            className="text-sm font-medium text-muted transition-colors duration-150 hover:text-fg"
+          >
+            Privacy Policy
+          </a>
+          <p className="text-sm text-subtle md:text-right">
+            Whip Around is the platform we run for you. It is not the product.
+          </p>
+        </div>
       </div>
     </footer>
   );
