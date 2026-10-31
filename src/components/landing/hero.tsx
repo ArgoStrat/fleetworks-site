@@ -1,6 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ctaPrimary } from "@/lib/content";
+import {
+  businessPhoneDisplay,
+  businessPhoneTel,
+  ctaPrimary,
+} from "@/lib/content";
 import { useApp } from "@/lib/store";
 
 export function Hero() {
@@ -32,6 +36,13 @@ export function Hero() {
           </div>
           <p className="mt-5 max-w-md text-sm leading-relaxed text-subtle">
             15 minutes. If the fleet is already under control, we'll tell you.
+            Prefer to talk now?{" "}
+            <a
+              href={businessPhoneTel}
+              className="font-medium text-muted transition-colors duration-150 hover:text-fg"
+            >
+              {businessPhoneDisplay}
+            </a>
           </p>
         </div>
         <figure className="relative">

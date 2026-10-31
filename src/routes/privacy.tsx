@@ -1,6 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mark } from "@/components/landing/mark";
 import { Footer } from "@/components/landing/sections";
+import {
+  businessEmail,
+  businessEmailMailto,
+  businessPhoneDisplay,
+  businessPhoneTel,
+} from "@/lib/content";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -107,7 +113,7 @@ function PrivacyPage() {
             <p>
               FleetWorks may send text messages to the mobile number associated
               with your account or inquiry from{" "}
-              <span className="text-fg">(407) 326-2400</span>.
+              <span className="text-fg">{businessPhoneDisplay}</span>.
             </p>
             <ul className="list-disc space-y-2 pl-5">
               <li>
@@ -165,17 +171,17 @@ function PrivacyPage() {
               Email:{" "}
               <a
                 className="text-accent underline-offset-2 hover:underline"
-                href="mailto:info@fleetworkspro.net"
+                href={businessEmailMailto}
               >
-                info@fleetworkspro.net
+                {businessEmail}
               </a>
               <br />
               Phone:{" "}
               <a
                 className="text-accent underline-offset-2 hover:underline"
-                href="tel:+14073262400"
+                href={businessPhoneTel}
               >
-                (407) 326-2400
+                {businessPhoneDisplay}
               </a>
             </p>
           </section>

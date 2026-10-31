@@ -15,6 +15,10 @@ import {
   loop,
   packages,
   trades,
+  businessPhoneDisplay,
+  businessPhoneTel,
+  businessEmail,
+  businessEmailMailto,
 } from "@/lib/content";
 import { useApp } from "@/lib/store";
 import { cn } from "@/lib/utils";
@@ -257,9 +261,17 @@ export function Cta() {
           We'll say if FleetWorks helps, and which package matches the way you
           want to run it.
         </p>
-        <Button className="mt-8" size="lg" onClick={() => openLead("footer")}>
-          {ctaPrimary}
-        </Button>
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <Button size="lg" onClick={() => openLead("footer")}>
+            {ctaPrimary}
+          </Button>
+          <a
+            href={businessPhoneTel}
+            className="text-sm font-medium text-ink-fg/80 transition-colors duration-150 hover:text-ink-fg"
+          >
+            Or call {businessPhoneDisplay}
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -277,6 +289,18 @@ export function Footer() {
           </p>
         </div>
         <div className="flex flex-col items-start gap-3 md:items-end">
+          <a
+            href={businessPhoneTel}
+            className="text-sm font-medium text-muted transition-colors duration-150 hover:text-fg"
+          >
+            {businessPhoneDisplay}
+          </a>
+          <a
+            href={businessEmailMailto}
+            className="text-sm font-medium text-muted transition-colors duration-150 hover:text-fg"
+          >
+            {businessEmail}
+          </a>
           <a
             href="/privacy"
             className="text-sm font-medium text-muted transition-colors duration-150 hover:text-fg"

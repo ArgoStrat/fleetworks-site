@@ -2,7 +2,12 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Mark } from "@/components/landing/mark";
-import { ctaPrimary, navLinks } from "@/lib/content";
+import {
+  businessPhoneDisplay,
+  businessPhoneTel,
+  ctaPrimary,
+  navLinks,
+} from "@/lib/content";
 import { useApp } from "@/lib/store";
 
 export function Nav() {
@@ -26,7 +31,13 @@ export function Nav() {
             </a>
           ))}
         </nav>
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-4 md:flex">
+          <a
+            href={businessPhoneTel}
+            className="text-sm font-medium text-muted transition-colors duration-150 hover:text-fg"
+          >
+            {businessPhoneDisplay}
+          </a>
           <Button onClick={() => openLead("nav")}>{ctaPrimary}</Button>
         </div>
         <button
@@ -52,6 +63,13 @@ export function Nav() {
                 {link.label}
               </a>
             ))}
+            <a
+              href={businessPhoneTel}
+              className="rounded-md px-2 py-3 text-base font-medium text-muted"
+              onClick={() => setOpen(false)}
+            >
+              {businessPhoneDisplay}
+            </a>
             <Button
               className="mt-2 w-full"
               onClick={() => {

@@ -7,6 +7,11 @@ export const navLinks = [
 
 export const ctaPrimary = "Book a 15-minute check-in";
 
+export const businessPhoneDisplay = "(407) 326-2400";
+export const businessPhoneTel = "tel:+14073262400";
+export const businessEmail = "info@fleetworkspro.net";
+export const businessEmailMailto = "mailto:info@fleetworkspro.net";
+
 export const trades = [
   "Plumbing",
   "Electrical",
