@@ -82,6 +82,15 @@ export function LeadDialog() {
   const picked = packages.find((p) => p.id === packageId);
 
   return (
+    <>
+      {/* A2P/public disclosure: consent language in page HTML even while the dialog portal is closed */}
+      <p hidden data-sms-consent-language>
+        I agree to receive text messages from FleetWorks about service updates,
+        appointments, and inspection alerts at the number provided. Message
+        frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out,
+        HELP for help. Consent is not a condition of purchase. See our Terms and
+        Privacy Policy.
+      </p>
     <Dialog open={open} onOpenChange={(v) => (!v ? closeLead() : null)}>
       <DialogContent>
         <DialogTitle className="font-display text-2xl">
@@ -177,6 +186,7 @@ export function LeadDialog() {
         )}
       </DialogContent>
     </Dialog>
+    </>
   );
 }
 
