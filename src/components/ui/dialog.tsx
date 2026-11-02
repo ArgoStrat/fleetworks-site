@@ -28,12 +28,11 @@ export function DialogContent({
   ...props
 }: ComponentProps<typeof DialogPrimitive.Content>) {
   return (
-    <DialogPrimitive.Portal forceMount>
-      <DialogOverlay forceMount className="data-[state=closed]:hidden" />
+    <DialogPrimitive.Portal>
+      <DialogOverlay />
       <DialogPrimitive.Content
-        forceMount
         className={cn(
-          "fixed top-1/2 left-1/2 z-50 w-[min(100%-1.5rem,32rem)] -translate-x-1/2 -translate-y-1/2 rounded-xl bg-surface p-6 shadow-[var(--shadow-border)] focus:outline-none data-[state=open]:animate-[rise-in_250ms_ease-out] data-[state=closed]:hidden",
+          "fixed top-1/2 left-1/2 z-50 w-[min(100%-1.5rem,32rem)] -translate-x-1/2 -translate-y-1/2 rounded-xl bg-surface p-6 shadow-[var(--shadow-border)] focus:outline-none data-[state=open]:animate-[rise-in_250ms_ease-out]",
           className,
         )}
         {...props}
