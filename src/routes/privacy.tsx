@@ -111,28 +111,43 @@ function PrivacyPage() {
           <section className="space-y-3">
             <h2 className="text-2xl text-fg">SMS / Text Messaging</h2>
             <p>
-              FleetWorks may send text messages to the mobile number associated
-              with your account or inquiry from{" "}
-              <span className="text-fg">{businessPhoneDisplay}</span>.
+              FleetWorks operates a Customer Care text messaging program
+              (&quot;FleetWorks Service Alerts&quot;) from{" "}
+              <span className="text-fg">{businessPhoneDisplay}</span>. Messages
+              may include service updates, appointment confirmations, and
+              vehicle inspection alerts. Message frequency varies. Message and
+              data rates may apply.
+            </p>
+            <p>
+              <span className="text-fg">How you opt in.</span> The publicly
+              visible opt-in is the optional checkbox on our website lead form
+              (next to the phone number field). The checkbox is unchecked by
+              default, and consent is not required to submit the form. The
+              checkbox language is:
+            </p>
+            <blockquote className="border-l-2 border-line pl-4 text-fg">
+              &quot;I agree to receive text messages from FleetWorks about
+              service updates, appointments, and inspection alerts at the
+              number provided. Message frequency varies. Msg &amp; data rates
+              may apply. Reply STOP to opt out, HELP for help. Consent is not a
+              condition of purchase. See our Terms and Privacy Policy.&quot;
+            </blockquote>
+            <p>
+              You may also opt in by signing a FleetWorks service agreement or
+              onboarding form that includes SMS consent language.
             </p>
             <ul className="list-disc space-y-2 pl-5">
               <li>
-                Message types include service updates, appointment confirmations,
-                and vehicle inspection alerts.
-              </li>
-              <li>
-                Consent is collected via the signed service agreement or
-                onboarding form.
-              </li>
-              <li>Message frequency varies.</li>
-              <li>Message and data rates may apply.</li>
-              <li>
                 Reply <span className="font-mono text-fg">STOP</span> to opt out
-                and <span className="font-mono text-fg">HELP</span> for help.
+                of further messages. Reply{" "}
+                <span className="font-mono text-fg">HELP</span> for help.
+              </li>
+              <li>
+                Message and data rates may apply depending on your mobile plan.
               </li>
               <li>
                 No mobile information will be shared with third parties or
-                affiliates for marketing/promotional purposes. Text messaging
+                affiliates for marketing or promotional purposes. Text messaging
                 originator opt-in data and consent will not be shared with any
                 third parties.
               </li>

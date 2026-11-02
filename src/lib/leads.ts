@@ -10,6 +10,7 @@ export type Lead = {
   note: string;
   source: string;
   packageId: string;
+  smsConsent: boolean;
 };
 
 const KEY = "fleetworks.leads.v2";

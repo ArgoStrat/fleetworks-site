@@ -301,12 +301,20 @@ export function Footer() {
           >
             {businessEmail}
           </a>
-          <a
-            href="/privacy"
-            className="text-sm font-medium text-muted transition-colors duration-150 hover:text-fg"
-          >
-            Privacy Policy
-          </a>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 md:justify-end">
+            <a
+              href="/terms"
+              className="text-sm font-medium text-muted transition-colors duration-150 hover:text-fg"
+            >
+              Terms
+            </a>
+            <a
+              href="/privacy"
+              className="text-sm font-medium text-muted transition-colors duration-150 hover:text-fg"
+            >
+              Privacy Policy
+            </a>
+          </div>
           <p className="text-sm text-subtle md:text-right">
             Whip Around is the platform we run for you. It is not the product.
           </p>

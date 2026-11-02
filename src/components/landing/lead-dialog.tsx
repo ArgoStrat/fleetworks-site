@@ -25,6 +25,7 @@ const schema = z.object({
   trade: z.string().min(2, "Pick the kind of work"),
   vehicles: z.string().min(1, "How many vehicles?"),
   note: z.string().optional(),
+  smsConsent: z.boolean(),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -46,6 +47,7 @@ export function LeadDialog() {
       trade: "",
       vehicles: "",
       note: "",
+      smsConsent: false,
     },
   });
 
@@ -60,6 +62,7 @@ export function LeadDialog() {
         trade: "",
         vehicles: "",
         note: "",
+        smsConsent: false,
       });
     }
   }, [open, form]);
@@ -70,6 +73,7 @@ export function LeadDialog() {
       note: values.note ?? "",
       source,
       packageId,
+      smsConsent: values.smsConsent,
     });
     setDone(true);
     toast.success("Request saved. We'll use it to set the 15-minute check-in.");
@@ -111,6 +115,38 @@ export function LeadDialog() {
               <Field label="Phone" error={form.formState.errors.phone?.message}>
                 <Input id="lead-phone" type="tel" autoComplete="tel" {...form.register("phone")} />
               </Field>
+            </div>
+            <div className="flex gap-3 items-start rounded-md bg-elevated/60 p-3 shadow-[var(--shadow-border)]">
+              <input
+                id="lead-sms-consent"
+                type="checkbox"
+                className="mt-1 size-4 shrink-0 rounded border border-line bg-surface accent-accent"
+                {...form.register("smsConsent")}
+              />
+              <label htmlFor="lead-sms-consent" className="text-sm leading-relaxed text-muted">
+                I agree to receive text messages from FleetWorks about service updates,
+                appointments, and inspection alerts at the number provided. Message
+                frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out,
+                HELP for help. Consent is not a condition of purchase. See our{" "}
+                <a
+                  href="/terms"
+                  className="text-accent underline-offset-2 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Terms
+                </a>{" "}
+                and{" "}
+                <a
+                  href="/privacy"
+                  className="text-accent underline-offset-2 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy Policy
+                </a>
+                .
+              </label>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               <Field label="Kind of work" error={form.formState.errors.trade?.message}>
