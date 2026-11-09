@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { packages, trades } from "@/lib/content";
 import { saveLead } from "@/lib/leads";
+import { submitLead } from "@/lib/lead/submit";
 import { useApp } from "@/lib/store";
 
 const schema = z.object({
@@ -67,16 +68,31 @@ export function LeadDialog() {
     }
   }, [open, form]);
 
-  function onSubmit(values: FormValues) {
-    saveLead({
+  async function onSubmit(values: FormValues) {
+    const lead = {
       ...values,
       note: values.note ?? "",
       source,
       packageId,
       smsConsent: values.smsConsent,
-    });
+    };
+    // Local copy stays as a fallback record on this browser.
+    try {
+      saveLead(lead);
+    } catch {
+      // storage can be unavailable (private mode); the server copy is what matters
+    }
+    try {
+      await submitLead({ data: { ...lead, pageUrl: window.location.href } });
+    } catch (err) {
+      console.error("Lead submit failed", err);
+      toast.error(
+        "We couldn't send your request. Please try again, or call or email us directly.",
+      );
+      return;
+    }
     setDone(true);
-    toast.success("Request saved. We'll use it to set the 15-minute check-in.");
+    toast.success("Request sent. We'll use it to set the 15-minute check-in.");
   }
 
   const picked = packages.find((p) => p.id === packageId);
@@ -98,7 +114,7 @@ export function LeadDialog() {
         </DialogTitle>
         <DialogDescription className="text-sm leading-relaxed text-muted">
           {done
-            ? "This stays on this browser for now. Jason will follow up by phone. No software demo — just how the trucks are managed today."
+            ? "Jason will follow up by phone. No software demo — just how the trucks are managed today."
             : picked
               ? `Starting from ${picked.name}. Tell us the real vehicle count and we'll say if a different package fits.`
               : "Who tracks oil changes, tags, and breakdowns today? That's the whole conversation."}
@@ -179,8 +195,8 @@ export function LeadDialog() {
             <Field label="What's falling through the cracks?" error={form.formState.errors.note?.message}>
               <Textarea id="lead-note" rows={3} {...form.register("note")} />
             </Field>
-            <Button type="submit" className="mt-1">
-              Request the check-in
+            <Button type="submit" className="mt-1" disabled={form.formState.isSubmitting}>
+              {form.formState.isSubmitting ? "Sending…" : "Request the check-in"}
             </Button>
           </form>
         )}
